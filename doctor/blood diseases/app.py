@@ -324,7 +324,7 @@ def download_pdf():
         pdf.add_page()
         
         try:
-            pdf.add_font('Arial', '', 'C:/Windows/Fonts/arial.ttf', uni=True)
+            pdf.add_font('Arial', '', 'arial.ttf', uni=True)
             pdf.set_font('Arial', '', 12)
         except:
             pdf.add_font('Arial', '', 'arial.ttf', uni=True)
