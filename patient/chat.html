@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot for Medical Assistance</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+        
+        h1 {
+            color: #007bff;
+        }
+        
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            color: #343a40;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Chatbot for Medical Assistance 🤖💊</h1>
+        <p>هذا الشات بوت مخصص للإجابة عن الأسئلة الطبية البسيطة.</p>
+        <input type="text" id="userInput" placeholder="اكتب استفسارك الطبي هنا">
+        <button id="submitBtn">احصل على إجابة</button>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        document.getElementById("submitBtn").addEventListener("click", async () => {
+            const userInput = document.getElementById("userInput").value;
+            if (!userInput) {
+                alert("يرجى إدخال استفسارك!");
+                return;
+            }
+            document.getElementById("response").textContent = "جارٍ معالجة سؤالك...";
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ user_input: userInput }),
+            });
+            const data = await response.json();
+            if (data.response) {
+                document.getElementById("response").textContent = "الإجابة: " + data.response;
+            } else {
+                document.getElementById("response").textContent = "حدث خطأ: " + data.error;
+            }
+        });
+    </script>
+</body>
+</html>

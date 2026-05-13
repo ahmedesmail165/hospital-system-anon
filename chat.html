@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شات بوت للمساعدة الطبية</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        #chatbox {
+            width: 80%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #user_input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        /* تنسيق الرسائل */
+        .user-message {
+            background-color: #d1f7d6;
+            text-align: right;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .bot-message {
+            background-color: #f0f0f0;
+            text-align: left;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>شات بوت للمساعدة الطبية 🤖💊</h1>
+    <div id="chatbox">
+        <input type="text" id="user_input" placeholder="اكتب استفسارك الطبي هنا...">
+        <button onclick="sendMessage()">إرسال</button>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user_input').value;
+            if (userInput.trim() === '') {
+                alert('يرجى إدخال سؤال');
+                return;
+            }
+
+            // إضافة الرسالة من المستخدم إلى واجهة الشات
+            const userMessageDiv = document.createElement("div");
+            userMessageDiv.classList.add("user-message");
+            userMessageDiv.textContent = userInput;
+            document.getElementById('response').appendChild(userMessageDiv);
+
+            // إرسال الطلب إلى الخادم
+            axios.post('http://127.0.0.1:5000/get_response', {
+                user_input: userInput
+            })
+            .then(function (response) {
+                // إضافة الإجابة من الشات بوت
+                const botMessageDiv = document.createElement("div");
+                botMessageDiv.classList.add("bot-message");
+                botMessageDiv.textContent = response.data.response;
+                document.getElementById('response').appendChild(botMessageDiv);
+                
+                // مسح الحقل بعد إرسال السؤال
+                document.getElementById('user_input').value = '';
+            })
+            .catch(function (error) {
+                const errorDiv = document.createElement("div");
+                errorDiv.classList.add("bot-message");
+                errorDiv.textContent = 'حدث خطأ أثناء معالجة سؤالك.';
+                document.getElementById('response').appendChild(errorDiv);
+            });
+        }
+    </script>
+</body>
+</html>

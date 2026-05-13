@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .report {
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .images img {
+            max-width: 100%; /* زيادة حجم الصورة */
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* ظل أكثر وضوحًا */
+            margin: 10px;
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .image-container h3 {
+            margin-bottom: 10px;
+            color: #007BFF;
+        }
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .download-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Brain Tumor Detection Report</h1>
+        
+        <!-- Display the report -->
+        <div class="report">
+            {{ report }}
+        </div>
+
+        <!-- Display the visualizations -->
+        {% if visualization_image %}
+            <div class="image-container">
+                <h3>Tumor Size Visualization</h3>
+                <div class="images">
+                    <img src="{{ visualization_image }}" alt="Tumor Size Analysis" style="max-width: 80%;">
+                </div>
+            </div>
+        {% endif %}
+
+        {% if segmentation_image %}
+            <div class="image-container">
+                <h3>Tumor Segmentation</h3>
+                <div class="images">
+                    <img src="{{ segmentation_image }}" alt="Tumor Segmentation" style="max-width: 80%;">
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Button to download the report as PDF -->
+        <form action="/save_pdf" method="post" style="margin-top: 20px;">
+            <input type="hidden" name="report" value="{{ report }}">
+            <input type="hidden" name="visualization_image" value="{{ visualization_image }}">
+            <input type="hidden" name="segmentation_image" value="{{ segmentation_image }}">
+            
+            <input type="hidden" name="name" value="{{ request.form['name'] }}">
+            <input type="hidden" name="national_id" value="{{ request.form['national_id'] }}">
+            <input type="hidden" name="nationality" value="{{ request.form['nationality'] }}">
+            <input type="hidden" name="age" value="{{ request.form['age'] }}">
+            <input type="hidden" name="mobile_number" value="{{ request.form['mobile_number'] }}">
+            <input type="hidden" name="gender" value="{{ request.form['gender'] }}">
+            <input type="hidden" name="chronic_diseases" value="{{ request.form['chronic_diseases'] }}">
+            <input type="hidden" name="blood_speed" value="{{ request.form['blood_speed'] }}">
+            <input type="hidden" name="blood_oxygen" value="{{ request.form['blood_oxygen'] }}">
+            <input type="hidden" name="sugar_measurement" value="{{ request.form['sugar_measurement'] }}">
+            <input type="hidden" name="blood_pressure" value="{{ request.form['blood_pressure'] }}">
+            <input type="hidden" name="weight" value="{{ request.form['weight'] }}">
+            <input type="hidden" name="height" value="{{ request.form['height'] }}">
+            <form method="POST" action="/save_pdf" enctype="multipart/form-data">
+            <form method="POST" action="/save_pdf" enctype="multipart/form-data">
+            <input type="hidden" name="tumor_type" value="{{ tumor_type }}">
+            <input type="hidden" name="tumor_size" value="{{ tumor_size }}">
+            <button type="submit" class="download-btn">Download Report as PDF</button>
+        </form>
+
+        <!-- Back to Home link -->
+        <a href="/" style="display: inline-block; margin-top: 20px; color: #007BFF; text-decoration: none;">Back to Home</a>
+    </div>
+</body>
+</html>
