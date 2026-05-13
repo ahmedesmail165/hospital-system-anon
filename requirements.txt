@@ -1,0 +1,9 @@
+﻿Flask
+Werkzeug
+Pillow
+tensorflow
+numpy
+fpdf
+matplotlib
+opencv-python
+google-generativeai

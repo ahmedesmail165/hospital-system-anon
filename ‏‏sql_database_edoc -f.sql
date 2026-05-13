@@ -61,11 +61,11 @@ CREATE TABLE `ambulance_requests` (
 --
 
 INSERT INTO `ambulance_requests` (`id`, `user_email`, `patient_name`, `phone`, `address`, `location`, `emergency_type`, `request_time`) VALUES
-(1, 'patient@edoc.com', 'mostfa hatem', '01014106072', 'alzarka', '', 'تعبان', '2025-03-22 09:12:37'),
-(2, 'patient@edoc.com', 'mostfa hatem', '01014106072', 'alzarka', '', 'عيان', '2025-03-22 09:15:22'),
-(3, 'patient@edoc.com', 'mostfa hatem', '01014106072', 'alzarka', '', 'عيان', '2025-03-22 10:42:03'),
-(4, 'mostfahatem668@gmail.com', 'mostfa hatem fawze mohamed', '01014106072', 'alzarka', '', 'i have cold', '2025-05-13 23:55:20'),
-(5, 'mostfahatem668@gmail.com', 'mostfa', '01014106072', 'zarka', 'zarka', 'تعبان', '2025-05-24 22:49:08');
+(1, 'patient@edoc.com', 'Jane Doe', '00000000000', 'alzarka', '', 'تعبان', '2025-03-22 09:12:37'),
+(2, 'patient@edoc.com', 'Jane Doe', '00000000000', 'alzarka', '', 'عيان', '2025-03-22 09:15:22'),
+(3, 'patient@edoc.com', 'Jane Doe', '00000000000', 'alzarka', '', 'عيان', '2025-03-22 10:42:03'),
+(4, 'mostfahatem668@gmail.com', 'Jane Doe fawze Doctor Two', '00000000000', 'alzarka', '', 'i have cold', '2025-05-13 23:55:20'),
+(5, 'mostfahatem668@gmail.com', 'mostfa', '00000000000', 'zarka', 'zarka', 'تعبان', '2025-05-24 22:49:08');
 
 -- --------------------------------------------------------
 
@@ -170,8 +170,8 @@ CREATE TABLE `doctor` (
 
 INSERT INTO `doctor` (`docid`, `docemail`, `docname`, `docpassword`, `docnic`, `doctel`, `specialties`) VALUES
 (1, 'doctor@edoc.com', 'Test Doctor', '123', '000000000', '0110000000', 1),
-(2, 'doctor1@edoc.com', 'mohamed ', '123', '443322', '01060283920', 5),
-(3, 'doctor2@edoc.com', 'mostfa', '123', '443322', '01060283920', 6),
+(2, 'doctor1@edoc.com', 'Doctor Two ', '123', '443322', '00000000000', 5),
+(3, 'doctor2@edoc.com', 'mostfa', '123', '443322', '00000000000', 6),
 (4, 'doctor3@edoc.com', 'hatem', '123', '11223344', '01060283921', 29),
 (5, 'dr.smith@edoc.com', 'Dr. John Smith', 'doc123', 'D12345678', '01112223334', 5),
 (6, 'dr.jones@edoc.com', 'Dr. Sarah Jones', 'doc123', 'D23456789', '01112223335', 14),
@@ -470,22 +470,22 @@ CREATE TABLE `patient` (
 
 INSERT INTO `patient` (`pid`, `pemail`, `pname`, `ppassword`, `paddress`, `pnic`, `pdob`, `ptel`, `gender`, `emergency_name`, `emergency_phone`, `emergency_relationship`, `insurance_provider`, `policy_number`, `group_number`, `height`, `weight`, `blood_type`, `allergies`, `medications`, `chronic_conditions`, `medical_history`, `family_history`, `symptoms`, `smoking`, `alcohol`, `exercise`) VALUES
 (1, 'patient@edoc.com', 'Test Patient', '123', 'Sri Lanka', '0000000000', '2000-01-01', '0120000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'emhashenudara@gmail.com', 'Hashen Udara', '123', 'Sri Lanka', '0110000000', '2022-06-03', '0700000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'patient2@edoc.com', 'mostfa hatem', '123', 'alzarka', '443322', '2025-02-07', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'patient3@edoc.com', 'mostfa hatem', '123', 'alzarka', '443322', '2025-02-02', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'patient4@edoc.com', 'mostfa hatem', '123', 'alzarka', '443322', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'patient8@edoc.com', 'mostfa hatem', '123', 'alzarka', '443322', '2025-02-02', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'patient9@edoc.com', 'mostfa hatem', '123', 'alzarka', '443322', '2025-02-02', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'patient10@edoc.com', 'mostfa hatem', '123', 'alzarka', '443322', NULL, NULL, 'male', 'mostfa', '01014106072', 'mostfa', 'mostfa', '010', '111', 180, 79, 'A+', 'mostfa', 'mostfa', 'yes', 'nmae', 'yes', 'yes', 'yes', 'yes', 'daily'),
-(9, 'patient77@edoc.com', 'mostfa hatem', '123', 'alzarka', '11223344', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'patientiv@edoc.com', 'mostfa hatem', '123', 'alzarka', '11223344', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 'patient7776@edoc.com', 'mostfa hatem', '123', 'alzarka', '11223344', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, 'patient8i84@edoc.com', 'mostfa hatem', '123', 'alzarka', '11223344', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13, 'patigent@edoc.com', 'mostfa hatem', '123', 'alzarka', '11223344', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'patient2@edoc.com', 'Patient Two', '123', 'Sri Lanka', '0110000000', '2022-06-03', '0700000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'patient2@edoc.com', 'Jane Doe', '123', 'alzarka', '443322', '2025-02-07', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'patient3@edoc.com', 'Jane Doe', '123', 'alzarka', '443322', '2025-02-02', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'patient4@edoc.com', 'Jane Doe', '123', 'alzarka', '443322', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'patient8@edoc.com', 'Jane Doe', '123', 'alzarka', '443322', '2025-02-02', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'patient9@edoc.com', 'Jane Doe', '123', 'alzarka', '443322', '2025-02-02', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'patient10@edoc.com', 'Jane Doe', '123', 'alzarka', '443322', NULL, NULL, 'male', 'mostfa', '00000000000', 'mostfa', 'mostfa', '010', '111', 180, 79, 'A+', 'mostfa', 'mostfa', 'yes', 'nmae', 'yes', 'yes', 'yes', 'yes', 'daily'),
+(9, 'patient77@edoc.com', 'Jane Doe', '123', 'alzarka', '11223344', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'patientiv@edoc.com', 'Jane Doe', '123', 'alzarka', '11223344', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 'patient7776@edoc.com', 'Jane Doe', '123', 'alzarka', '11223344', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 'patient8i84@edoc.com', 'Jane Doe', '123', 'alzarka', '11223344', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 'patigent@edoc.com', 'Jane Doe', '123', 'alzarka', '11223344', '2025-02-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14, 'Mostfa221100488@nmu.edu.eg', 'mostfa ha', 'mostfahatem12', 'zarka', '123456', '2025-02-03', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, 'mostfahatem669@edoc.com', 'mostfa hatem', '123 ', 'alzarka', '11223344', NULL, NULL, 'male', 'mostfa', '01014106072', 'mostfa', 'mostfa', '010', '111', 180, 79, 'A+', '', '', '', '', '', 'm', 'yes', 'yes', 'daily'),
-(16, 'mostfahatem668@gmail.com', 'mostfa hatem', '123', 'zarka', '123456', NULL, NULL, 'male', 'm', '1', '1', '1', '1', '1', 1, 1, 'A+', '1', '1', '1', '1', '1', '1', 'yes', 'yes', 'daily'),
-(17, 'mostfahatem667@gmail.com', 'mostfa hatem', '123', 'zarka', '123456', '2025-05-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 'mostfahatem669@edoc.com', 'Jane Doe', '123 ', 'alzarka', '11223344', NULL, NULL, 'male', 'mostfa', '00000000000', 'mostfa', 'mostfa', '010', '111', 180, 79, 'A+', '', '', '', '', '', 'm', 'yes', 'yes', 'daily'),
+(16, 'mostfahatem668@gmail.com', 'Jane Doe', '123', 'zarka', '123456', NULL, NULL, 'male', 'm', '1', '1', '1', '1', '1', 1, 1, 'A+', '1', '1', '1', '1', '1', '1', 'yes', 'yes', 'daily'),
+(17, 'mostfahatem667@gmail.com', 'Jane Doe', '123', 'zarka', '123456', '2025-05-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18, 'sayed@gmail.com', 'sayed  kara', '123', 'zarka', '123456', '2025-05-01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (19, 'sayed1@gmail.com', 'sayed  kara', '123', 'zarka', '123456', NULL, NULL, 'male', 'm', '1', '1', '1', '1', '1', 160, 50, 'A+', '1', '1', '1', '1', '1', '1', 'yes', 'yes', 'weekly'),
 (20, 'patient20@edoc.com', 'Robert Johnson', 'pat123', '123 Main St', 'P12345678', '1985-05-15', '0123456789', 'male', 'Mary Johnson', '0123456780', 'Spouse', 'MediCare', 'POL12345', 'GRP100', 175, 80, 'O+', 'Penicillin', 'Lisinopril', 'Hypertension', 'Appendectomy 2010', 'Father: Heart disease', 'Headache, fatigue', 'no', 'no', 'weekly'),
@@ -868,7 +868,7 @@ INSERT INTO `webuser` (`email`, `usertype`) VALUES
 ('admin@edoc.com', 'a'),
 ('doctor@edoc.com', 'd'),
 ('patient@edoc.com', 'p'),
-('emhashenudara@gmail.com', 'p'),
+('patient2@edoc.com', 'p'),
 ('doctor1@edoc.com', 'd'),
 ('doctor2@edoc.com', 'd'),
 ('doctor3@edoc.com', 'd'),
